@@ -62,7 +62,7 @@ resource "aws_lambda_function" "library-manga-lambda" {
   s3_key        = "function.zip"
   function_name = "library-manga-lambda"
   handler       = "index.handler"
-  runtime       = "nodejs16.x"
+  runtime       = "nodejs12.x"
   timeout       = 180
   role          = aws_iam_role.iam_for_lambda.arn
   depends_on = [
