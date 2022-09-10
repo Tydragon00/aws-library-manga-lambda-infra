@@ -59,7 +59,7 @@ resource "aws_s3_bucket" "s3-bucket-lambda" {
 
 resource "aws_lambda_function" "library-manga-lambda" {
   s3_bucket     = "library-manga-bucket"
-  s3_key        = "function.zip"
+  s3_key        = "aws-library-manga-lambda-main.zip"
   function_name = "library-manga-lambda"
   handler       = "index.handler"
   runtime       = "nodejs12.x"
