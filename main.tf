@@ -65,9 +65,7 @@ resource "aws_iam_role_policy_attachment" "basic_execution" {
 }
 #Lambda Cloudwatch
 resource "aws_cloudwatch_log_group" "library-manga-lambda-cloudwatch" {
-  name = "/aws/lambda/library-manga-lambda-test"
-
-
+  name = "/aws/lambda/library-manga-lambda"
 }
 
 
