@@ -99,9 +99,6 @@ resource "aws_dynamodb_table" "library-manga" {
     name = "Publisher"
     type = "S"
   }
-  attribute {
-    name = "Author"
-    type = "S"
-  }
+
 
 }
