@@ -59,10 +59,10 @@ resource "aws_s3_bucket" "s3-bucket-lambda" {
 }
 
 # Lambda Basics Policy (Cloudwatch logs)
-#resource "aws_iam_role_policy_attachment" "basic_execution" {
-#  role       = aws_iam_role.iam_for_lambda.name
-#  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
-#}
+resource "aws_iam_role_policy_attachment" "basic_execution" {
+  role       = aws_iam_role.iam_for_lambda.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
 
 resource "aws_lambda_function" "library-manga-lambda" {
   s3_bucket     = "library-manga-bucket"
