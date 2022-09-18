@@ -81,3 +81,23 @@ resource "aws_lambda_function" "library-manga-lambda" {
     "aws_s3_bucket.s3-bucket-lambda",
   ]
 }
+
+#
+# DynamoDB Table to store manga in library-manga
+#
+resource "aws_dynamodb_table" "library-manga" {
+  name         = "library-manga-db"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "Name"
+  range_key    = "Publisher"
+
+  attribute {
+    name = "Name"
+    type = "S"
+  }
+  attribute {
+    name = "Publisher"
+    type = "S"
+  }
+
+}
