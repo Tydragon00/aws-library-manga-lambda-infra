@@ -127,7 +127,7 @@ data "aws_iam_policy_document" "manga_read_access_document" {
       "dynamodb:DeleteItem"
     ]
     resources = [
-      aws_dynamodb_table.library-manga-db.arn
+      aws_dynamodb_table.library-manga.arn
     ]
   }
 }
