@@ -138,5 +138,5 @@ data "aws_iam_policy_document" "manga_read_access_document" {
 # DynamoDB Products Table Policy
 resource "aws_iam_role_policy_attachment" "dynamodb_manga_access" {
   role       = aws_iam_role.iam_for_lambda.name
-  policy_arn = var.aws_iam_policy_document.arn
+  policy_arn = var.aws_dynamodb_table.library-manga.arn
 }
