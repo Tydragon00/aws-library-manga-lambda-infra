@@ -108,8 +108,8 @@ resource "aws_dynamodb_table" "library-manga" {
 
 # Gives Permission to read and write on DynamoDb
 resource "aws_iam_policy" "library-manga_read_access" {
-  name   = "${var.project_name}-manga-read-write-access"
-  path   = "/${replace(var.project_name, "-", "/")}/dynamodb/manga/readwriteaccess/"
+  name   = "library-manga-read-write-access"
+  path   = "library-manga/dynamodb/manga/readwriteaccess/"
   policy = data.aws_iam_policy_document.manga_read_access_document.json
 }
 
