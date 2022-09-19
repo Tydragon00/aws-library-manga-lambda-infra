@@ -69,6 +69,7 @@ resource "aws_cloudwatch_log_group" "library-manga-lambda-cloudwatch" {
 }
 
 
+
 resource "aws_lambda_function" "library-manga-lambda" {
   s3_bucket     = "library-manga-bucket"
   s3_key        = "aws-library-manga-lambda-main.zip"
@@ -130,4 +131,12 @@ data "aws_iam_policy_document" "manga_read_access_document" {
       aws_dynamodb_table.library-manga.arn
     ]
   }
+}
+
+
+
+# DynamoDB Products Table Policy
+resource "aws_iam_role_policy_attachment" "dynamodb_manga_access" {
+  role       = aws_iam_role.library-manga-lambda.name
+  policy_arn = var.aws_iam_policy_document.manga_read_access.arn
 }
