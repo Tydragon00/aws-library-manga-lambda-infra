@@ -102,3 +102,32 @@ resource "aws_dynamodb_table" "library-manga" {
 
 
 }
+#
+# Data Access Policies
+#
+
+# Gives Permission to read and write on DynamoDb
+resource "aws_iam_policy" "library-manga_read_access" {
+  name   = "${var.project_name}-manga-read-write-access"
+  path   = "/${replace(var.project_name, "-", "/")}/dynamodb/manga/readwriteaccess/"
+  policy = data.aws_iam_policy_document.manga_read_access_document.json
+}
+
+data "aws_iam_policy_document" "manga_read_access_document" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "dynamodb:PutItem",
+      "dynamodb:GetItem",
+      "dynamodb:BatchGetItem",
+      "dynamodb:BatchWriteItem",
+      "dynamodb:Query",
+      "dynamodb:Scan",
+      "dynamodb:UpdateItem",
+      "dynamodb:DeleteItem"
+    ]
+    resources = [
+      aws_dynamodb_table.library-manga-db.arn
+    ]
+  }
+}
